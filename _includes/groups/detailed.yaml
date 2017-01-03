@@ -1,0 +1,23 @@
+############################################################
+#
+# Home Assistant Detailed View
+#
+############################################################
+
+detailed:
+   name: Detailiert
+   view: yes
+   entities:
+    - group.all_mobile_devices
+#    - group.safety
+
+All Mobile Devices:
+    - device_tracker.wmphone
+    - device_tracker.heikesiphone
+    - device_tracker.leasiphone
+    - device_tracker.androidd7e9cde22f4c3620
+
+#Safety:
+#  - sensor.living_room_battery_level
+#  - sensor.living_room_co_status
+#  - sensor.living_room_smoke_status

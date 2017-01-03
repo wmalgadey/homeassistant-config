@@ -1,0 +1,6 @@
+  - platform: yamaha
+    host: 192.168.6.65
+  
+  - platform: panasonic_viera
+    name: Der Fernseher
+    host: 192.168.6.39

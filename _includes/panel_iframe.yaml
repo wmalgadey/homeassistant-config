@@ -1,0 +1,9 @@
+  router:
+    title: 'Router'
+    icon: 'mdi:router-wireless'
+    url: 'http://192.168.6.1'
+    
+  grafana:
+    title: 'Dashboard'
+    icon: 'mdi:chart-line'
+    url: 'http://192.168.6.62:3000'

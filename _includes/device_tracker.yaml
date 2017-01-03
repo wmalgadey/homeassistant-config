@@ -1,0 +1,3 @@
+﻿  - platform: fritz
+    username: !secret fritz_username
+    password: !secret fritz_password

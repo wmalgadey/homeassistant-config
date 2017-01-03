@@ -1,0 +1,21 @@
+device_tracker.gateway:
+  hidden: True
+  
+device_tracker.ourhue:
+  hidden: True
+  
+device_tracker.raspberrypi:
+  hidden: True
+  
+device_tracker.tado:
+  hidden: True
+  
+  
+device_tracker.dasmalgadeybook:
+  hidden: True
+  
+device_tracker.pc19216823:
+  hidden: True
+  
+device_tracker.wmbook:
+  hidden: True

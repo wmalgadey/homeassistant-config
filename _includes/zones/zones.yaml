@@ -1,0 +1,23 @@
+- name: Zu Hause
+  latitude: !secret latitude_home
+  longitude: !secret longitude_home
+  radius: 150
+  icon: mdi:home
+    
+- name: Arbeit
+  latitude: !secret latitude_zone2  
+  longitude: !secret longitude_zone2
+  radius: 150
+  icon: mdi:briefcase
+
+- name: Schule
+  latitude: !secret latitude_zone3
+  longitude: !secret longitude_zone3
+  radius: 200
+  icon: mdi:school
+
+- name: Arbeit
+  latitude: !secret latitude_zone4
+  longitude: !secret longitude_zone4
+  radius: 150
+  icon: mdi:human-greeting

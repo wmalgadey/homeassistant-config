@@ -1,0 +1,113 @@
+﻿#  tado updates:
+#    name: Tado Updates
+#    entities:
+#      - sensor.wohnzimmer_temperature_time
+#      - sensor.wohnzimmer_humidity_time
+#      - sensor.wohnzimmer_heating_time
+#      - sensor.schlafzimmer_temperature_time
+#      - sensor.schlafzimmer_humidity_time
+#      - sensor.schlafzimmer_heating_time
+#      - sensor.badezimmer_unten_temperature_time
+#      - sensor.badezimmer_unten_humidity_time
+#      - sensor.badezimmer_unten_heating_time
+
+  livingroom:
+    name: Wohnzimmer
+    entities:
+      - sensor.wohnzimmer_tado_mode
+      - sensor.wohnzimmer_power
+      - sensor.wohnzimmer_link
+      - sensor.wohnzimmer_temperature
+#      - sensor.wohnzimmer_temperature_setting
+      - sensor.wohnzimmer_humidity
+      - sensor.wohnzimmer_heating
+      - light.fernseher
+      - light.esstisch
+      - device_tracker.dieanlage
+      - device_tracker.xboxone
+      - device_tracker.nintendowiiu
+      - device_tracker.wohnzimmer
+      - media_player.yamaha_receiver
+      - media_player.der_fernseher
+      - sensor.wolfgangs_notebook
+
+  entryroom:
+    name: Eingang
+    entities:
+      - sensor.phone
+
+  masterbedroom:
+    name: Schlafzimmer
+    entities:
+      - sensor.schlafzimmer_tado_mode
+      - sensor.schlafzimmer_power
+      - sensor.schlafzimmer_link
+      - sensor.schlafzimmer_temperature
+#      - sensor.schlafzimmer_temperature_setting
+      - sensor.schlafzimmer_humidity
+      - sensor.schlafzimmer_heating
+      - light.kopflampe
+      - light.schlafzimmer_decke
+      - device_tracker.schlafzimmer
+      - device_tracker.wmphone
+      - device_tracker.heikesiphone
+
+  wetroom_down:
+    name: Bad unten
+    entities:
+      - sensor.badezimmer_unten_tado_mode
+      - sensor.badezimmer_unten_power
+      - sensor.badezimmer_unten_link
+      - sensor.badezimmer_unten_temperature
+#      - sensor.badezimmer_unten_temperature_setting
+      - sensor.badezimmer_unten_humidity
+      - sensor.badezimmer_unten_heating
+
+  kitchen:
+    name: Küche
+    entities:
+      - light.lichtleiste
+      - light.kuchenlampe
+
+  downstairs:
+    name: Untere Etage
+    view: yes
+    entities:
+      - group.livingroom
+      - group.masterbedroom
+      - group.wetroom_down
+      - group.kitchen
+      - group.entryroom
+
+  bedroom_sophie:
+    name: Sophies Zimmer
+
+  bedroom_fabian:
+    name: Fabians Zimmer
+    entities:
+      - light.fabians_decke
+      - device_tracker.androidd7e9cde22f4c3620
+      - sensor.fabians_notebook
+
+  bedroom_lea:
+    name: Leas Zimmer
+    entities:
+      - light.leas_decke
+      - light.leas_nachttisch
+      - device_tracker.leasappletv
+      - device_tracker.leasiphone
+      - sensor.leas_notebook
+
+  wetroom_up:
+    name: Bad oben
+    entities:
+      - light.decke_oberes_bad
+
+  upstairs:
+    name: Obere Etage
+    view: yes
+    entities:
+      - group.bedroom_sophie
+      - group.bedroom_fabian
+      - group.bedroom_lea
+      - group.wetroom_up

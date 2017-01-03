@@ -1,0 +1,13 @@
+visitor:
+  name: Besucher Modus 
+  initial: off
+  
+sleep_mode:
+  name: Schlaf Modus
+  initial: off
+  icon: mdi:sleep
+  
+on_vaca:
+  name: Im Urlaub
+  initial: off
+  icon: mdi:airplane-takeoff
