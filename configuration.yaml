@@ -1,281 +1,63 @@
+############################################################
+#
+# Home Assistant Main Configuration File
+#
+############################################################
+
 homeassistant:
-  # Name of the location where Home Assistant is running
   name: Die Wohnung
-  
-  # Location required to calculate the time the sun rises and sets
   latitude: !secret latitude_home
   longitude: !secret longitude_home
-
-  # Impacts weather/sunrise data (altitude above sea level in meters)
   elevation: 42
-  
-  # metric for Metric, imperial for Imperial
   unit_system: metric
-  
-  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/Berlin
-
-  customize: !include customize.yaml
-  
-
-# Enables the frontend
-frontend:
+  customize: !include_dir_merge_named _includes/customization
 
 http:
-  # Uncomment this to add a password (recommended!)
   api_password: !secret hass_apipassword
-  # Uncomment this if you are using SSL or running in Docker etc
-  # base_url: example.duckdns.org:8123
+  trusted_networks:
+    - 192.168.6.0/24
+    - 127.0.0.1
+  ip_ban_enabled: True
 
-# Checks for available updates
+frontend:
+
 updater:
 
-# Discover some devices automatically
 discovery:
-
-# Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
-
-# Enables support for tracking state changes over time.
+  
 history:
-
-# View all events in a logbook
 logbook:
-#zeroconf:
 recorder:
   purge_days: 3
-
+#zeroconf:
 #logger:
 #  default: error
 #  logs:
 #    homeassistant.components.sensor: info
 
-# Track the sun
-sun:
-
-group:
-  default_view:
-    view: yes
-    icon: mdi:home
-    entities:
-      - device_tracker.wmphone
-      - device_tracker.heikesiphone
-      - device_tracker.leasiphone
-      - device_tracker.androidd7e9cde22f4c3620
-
-  dark sky:
-    name: Wetter
-    entities:
-      - sun.sun
-      - sensor.dark_sky_apparent_temperature
-      - sensor.dark_sky_cloud_coverage
-      - sensor.dark_sky_daily_high_apparent_temperature
-      - sensor.dark_sky_daily_high_temperature
-      - sensor.dark_sky_daily_low_apparent_temperature
-      - sensor.dark_sky_daily_low_temperature
-      - sensor.dark_sky_daily_max_precip_intensity
-      - sensor.dark_sky_daily_summary
-      - sensor.dark_sky_dew_point
-      - sensor.dark_sky_hourly_summary
-      - sensor.dark_sky_humidity
-      - sensor.dark_sky_icon
-      - sensor.dark_sky_minutely_summary
-      - sensor.dark_sky_nearest_storm_bearing
-      - sensor.dark_sky_nearest_storm_distance
-      - sensor.dark_sky_ozone
-      - sensor.dark_sky_precip
-      - sensor.dark_sky_precip_intensity
-      - sensor.dark_sky_precip_probability
-      - sensor.dark_sky_pressure
-      - sensor.dark_sky_summary
-      - sensor.dark_sky_temperature
-      - sensor.dark_sky_visibility
-      - sensor.dark_sky_wind_bearing
-      - sensor.dark_sky_wind_speed
-
-  tado updates:
-    name: Tado Updates
-    entities:
-      - sensor.wohnzimmer_temperature_time
-      - sensor.wohnzimmer_humidity_time
-      - sensor.wohnzimmer_heating_time
-      - sensor.schlafzimmer_temperature_time
-      - sensor.schlafzimmer_humidity_time
-      - sensor.schlafzimmer_heating_time
-      - sensor.badezimmer_unten_temperature_time
-      - sensor.badezimmer_unten_humidity_time
-      - sensor.badezimmer_unten_heating_time
-
-  livingroom:
-    name: Wohnzimmer
-    entities:
-      - sensor.wohnzimmer_tado_mode
-      - sensor.wohnzimmer_power
-      - sensor.wohnzimmer_link
-      - sensor.wohnzimmer_temperature
-      - sensor.wohnzimmer_temperature_setting
-      - sensor.wohnzimmer_humidity
-      - sensor.wohnzimmer_heating
-      - light.fernseher
-      - light.esstisch
-      - device_tracker.dieanlage
-      - device_tracker.xboxone
-      - device_tracker.nintendowiiu
-      - device_tracker.wohnzimmer
-      - media_player.yamaha_receiver
-      - media_player.der_fernseher
-
-  entryroom:
-    name: Eingang
-    entities:
-      - device_tracker.gateway
-      - device_tracker.ourhue
-      - device_tracker.raspberrypi
-      - device_tracker.tado
-      - sensor.phone
-      - sensor.die_wohnung_tado_bridge_status
-
-  masterbedroom:
-    name: Schlafzimmer
-    entities:
-      - sensor.schlafzimmer_tado_mode
-      - sensor.schlafzimmer_power
-      - sensor.schlafzimmer_link
-      - sensor.schlafzimmer_temperature
-      - sensor.schlafzimmer_temperature_setting
-      - sensor.schlafzimmer_humidity
-      - sensor.schlafzimmer_heating
-      - light.kopflampe
-      - light.schlafzimmer_decke
-      - device_tracker.schlafzimmer
-      - device_tracker.wmphone
-      - device_tracker.heikesiphone
-
-  wetroom_down:
-    name: Bad unten
-    entities:
-      - sensor.badezimmer_unten_tado_mode
-      - sensor.badezimmer_unten_power
-      - sensor.badezimmer_unten_link
-      - sensor.badezimmer_unten_temperature
-      - sensor.badezimmer_unten_temperature_setting
-      - sensor.badezimmer_unten_humidity
-      - sensor.badezimmer_unten_heating
-
-  kitchen:
-    name: Küche
-    entities:
-      - light.lichtleiste
-      - light.kuchenlampe
-
-  downstairs:
-    name: Untere Etage
-    view: yes
-    entities:
-      - group.livingroom
-      - group.masterbedroom
-      - group.wetroom_down
-      - group.kitchen
-      - group.entryroom
-
-  bedroom_sophie:
-    name: Sophies Zimmer
-
-  bedroom_fabian:
-    name: Fabians Zimmer
-    entities:
-      - light.fabians_decke
-      - device_tracker.androidd7e9cde22f4c3620
-      - device_tracker.dasmalgadeybook
-
-  bedroom_lea:
-    name: Leas Zimmer
-    entities:
-      - light.leas_decke
-      - light.leas_nachttisch
-      - device_tracker.leasappletv
-      - device_tracker.leasiphone
-      - device_tracker.pc19216823
-
-  wetroom_up:
-    name: Bad oben
-    entities:
-      - light.decke_oberes_bad
-
-  upstairs:
-    name: Obere Etage
-    view: yes
-    entities:
-      - group.bedroom_sophie
-      - group.bedroom_fabian
-      - group.bedroom_lea
-      - group.wetroom_up
-
-  information:
-    name: Informationen
-    view: yes
-    entities:
-      - group.entryroom
-      - group.dark_sky
-      - group.tado_updates
- 
-light:
-  platform: hue
-  host: 192.168.6.20
-
-device_tracker:
-  - platform: fritz
-    username: !secret fritz_username
-    password: !secret fritz_password
-
-tado_v1:
-  mytado_username: !secret mytado_username
-  mytado_password: !secret mytado_password
-
-media_player:
-  - platform: yamaha
-    host: 192.168.6.65
-  
-  - platform: panasonic_viera
-    name: Der Fernseher
-    host: 192.168.6.39
-
-sensor:
-  - platform: fritzbox_callmonitor
-
-# outside conditions
-  - platform: darksky
-    api_key: !secret darksky_api_key
-    monitored_conditions:
-      - summary
-      - icon
-      - nearest_storm_distance
-      - nearest_storm_bearing
-      - precip_type
-      - precip_intensity
-      - precip_probability
-      - temperature
-      - apparent_temperature
-      - dew_point
-      - wind_speed
-      - wind_bearing
-      - cloud_cover
-      - humidity
-      - pressure
-      - visibility
-      - ozone
-      - minutely_summary
-      - hourly_summary
-      - daily_summary
-      - temperature_max
-      - temperature_min
-      - apparent_temperature_max
-      - apparent_temperature_min
-      - precip_intensity_max
+conversation:
 
 # Text to speech
 tts:
   platform: google
+
+sun:
+
+############################################################
+#
+# Components
+#
+############################################################
+
+light:
+  platform: hue
+  host: 192.168.6.20
+  allow_unreachable: true
+
+tado_v1:
+  mytado_username: !secret mytado_username
+  mytado_password: !secret mytado_password
 
 influxdb:
   host: localhost
@@ -298,33 +80,31 @@ influxdb:
     - group.wetroom_up
     - group.dark_sky
     - group.tado_updates
-    - group.information
     - group.default_view
+    - group.security
+    - group.detailed
+    - group.all_mobile_devices
 
-zone:
-  name: Home
-  latitude: !secret latitude_home
-  longitude: !secret longitude_home
-  radius: 150
-  icon: mdi:home
-    
-zone 2:
-  name: Work
-  latitude: !secret latitude_zone2  
-  longitude: !secret longitude_zone2
-  radius: 150
-  icon: mdi:worker
+  
+############################################################
+#
+# Includes
+#
+############################################################
 
-zone 3:
-  name: Schule (GBG)
-  latitude: !secret latitude_zone3
-  longitude: !secret longitude_zone3
-  radius: 200
-  icon: mdi:school
+# Single Files
 
-zone 4:
-  name: Work
-  latitude: !secret latitude_zone4
-  longitude: !secret longitude_zone4
-  radius: 150
-  icon: mdi:worker
+media_player: !include _includes/media_player.yaml
+device_tracker: !include _includes/device_tracker.yaml
+panel_iframe: !include _includes/panel_iframe.yaml
+weblink: !include _includes/weblink.yaml
+input_boolean: !include _includes/input_boolean.yaml
+
+# Merge List
+
+sensor: !include_dir_merge_list _includes/sensors
+zone: !include_dir_merge_list _includes/zones
+
+# Merge Named
+
+group: !include_dir_merge_named _includes/groups
