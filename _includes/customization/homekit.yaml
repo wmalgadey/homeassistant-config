@@ -1,52 +1,52 @@
 ﻿sensor.dark_sky_apparent_temperature:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_cloud_coverage:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_daily_high_apparent_temperature:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_daily_high_temperature:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_daily_low_apparent_temperature:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_daily_low_temperature:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_daily_max_precip_intensity:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_daily_summary:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_dew_point:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_hourly_summary:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_humidity:
-  homekit_hidden: False
-  homekit_name: Luftfeuchtigkeit Außen 
+  homebridge_hidden: False
+  homebridge_name: Luftfeuchtigkeit Außen 
 sensor.dark_sky_icon:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_minutely_summary:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_nearest_storm_bearing:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_nearest_storm_distance:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_ozone:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_precip:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_precip_intensity:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_precip_probability:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_pressure:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_summary:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_temperature:
-  homekit_hidden: False
-  homekit_name: Temperatur Außen
+  homebridge_hidden: False
+  homebridge_name: Temperatur Außen
 sensor.dark_sky_visibility:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_wind_bearing:
-  homekit_hidden: True
+  homebridge_hidden: True
 sensor.dark_sky_wind_speed:
-  homekit_hidden: True
+  homebridge_hidden: True
