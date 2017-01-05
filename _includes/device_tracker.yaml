@@ -1,3 +1,4 @@
-﻿  - platform: fritz
-    username: !secret fritz_username
-    password: !secret fritz_password
+﻿- platform: fritz
+  username: !secret fritz_username
+  password: !secret fritz_password
+- platform: bluetooth_tracker
