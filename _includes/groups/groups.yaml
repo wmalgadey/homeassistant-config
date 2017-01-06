@@ -14,6 +14,7 @@
   livingroom:
     name: Wohnzimmer
     entities:
+      - climate.wohnzimmer
       - sensor.wohnzimmer_tado_mode
       - sensor.wohnzimmer_power
       - sensor.wohnzimmer_link
@@ -39,6 +40,7 @@
   masterbedroom:
     name: Schlafzimmer
     entities:
+      - climate.schlafzimmer
       - sensor.schlafzimmer_tado_mode
       - sensor.schlafzimmer_power
       - sensor.schlafzimmer_link
@@ -55,6 +57,7 @@
   wetroom_down:
     name: Bad unten
     entities:
+      - climate.badezimmer_unten
       - sensor.badezimmer_unten_tado_mode
       - sensor.badezimmer_unten_power
       - sensor.badezimmer_unten_link
