@@ -38,7 +38,7 @@
 
     leas_notebook:
       friendly_name: Leas Notebook
-      value_template: "{{ 'online' if is_state('device_tracker.pc192168623', 'home') else 'offline' }}"
+      value_template: "{{ 'online' if is_state('device_tracker.desktop2436t3f', 'home') else 'offline' }}"
 
     wolfgangs_notebook:
       friendly_name: Wolfgangs MacBook

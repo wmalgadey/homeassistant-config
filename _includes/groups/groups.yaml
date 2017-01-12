@@ -1,17 +1,4 @@
-﻿#  tado updates:
-#    name: Tado Updates
-#    entities:
-#      - sensor.wohnzimmer_temperature_time
-#      - sensor.wohnzimmer_humidity_time
-#      - sensor.wohnzimmer_heating_time
-#      - sensor.schlafzimmer_temperature_time
-#      - sensor.schlafzimmer_humidity_time
-#      - sensor.schlafzimmer_heating_time
-#      - sensor.badezimmer_unten_temperature_time
-#      - sensor.badezimmer_unten_humidity_time
-#      - sensor.badezimmer_unten_heating_time
-
-  livingroom:
+﻿  livingroom:
     name: Wohnzimmer
     entities:
       - climate.wohnzimmer
@@ -19,7 +6,7 @@
       - sensor.wohnzimmer_power
       - sensor.wohnzimmer_link
       - sensor.wohnzimmer_temperature
-#      - sensor.wohnzimmer_temperature_setting
+      - sensor.wohnzimmer_overlay
       - sensor.wohnzimmer_humidity
       - sensor.wohnzimmer_heating
       - light.fernseher
@@ -45,7 +32,7 @@
       - sensor.schlafzimmer_power
       - sensor.schlafzimmer_link
       - sensor.schlafzimmer_temperature
-#      - sensor.schlafzimmer_temperature_setting
+      - sensor.schlafzimmer_overlay
       - sensor.schlafzimmer_humidity
       - sensor.schlafzimmer_heating
       - light.kopflampe
@@ -62,7 +49,7 @@
       - sensor.badezimmer_unten_power
       - sensor.badezimmer_unten_link
       - sensor.badezimmer_unten_temperature
-#      - sensor.badezimmer_unten_temperature_setting
+      - sensor.badezimmer_unten_overlay
       - sensor.badezimmer_unten_humidity
       - sensor.badezimmer_unten_heating
 

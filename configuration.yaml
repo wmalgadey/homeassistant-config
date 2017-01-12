@@ -40,8 +40,12 @@ conversation:
 
 # Text to speech
 tts:
-  platform: google
-
+  - platform: google
+    language: 'de'
+    
+ifttt:
+  key: !secret ifttt_apikey
+    
 sun:
 
 ############################################################
@@ -84,6 +88,9 @@ influxdb:
     - group.security
     - group.detailed
     - group.all_mobile_devices
+    - climate.wohnzimmer
+    - climate.schlafzimmer
+    - climate.badezimmer_unten
 
   
 ############################################################
