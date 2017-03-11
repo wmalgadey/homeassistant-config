@@ -19,3 +19,9 @@ device_tracker.pc19216823:
   
 device_tracker.wmbook:
   hidden: True
+  
+group.all_devices:
+  hidden: False
+  
+group.all_lights:
+  hidden: False

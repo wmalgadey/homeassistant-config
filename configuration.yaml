@@ -5,7 +5,7 @@
 ############################################################
 
 homeassistant:
-  name: Die Wohnung
+  name: Wohnung
   latitude: !secret latitude_home
   longitude: !secret longitude_home
   elevation: 42
@@ -22,11 +22,21 @@ http:
 
 frontend:
 
+#config:
+
 updater:
 
 discovery:
   
 history:
+  exclude:
+    domains:
+      - automation
+      - camera
+      - group
+      - sun
+      - updater
+      - weblink
 logbook:
 recorder:
   purge_days: 3
@@ -44,7 +54,7 @@ tts:
     language: 'de'
     
 ifttt:
-  key: !secret ifttt_apikey
+  key: bfC20Y3l7Pzsbx-h5V72L2
     
 sun:
 
@@ -60,8 +70,8 @@ light:
   allow_unreachable: true
 
 tado_v1:
-  mytado_username: !secret mytado_username
-  mytado_password: !secret mytado_password
+  username: !secret mytado_username
+  password: !secret mytado_password
 
 influxdb:
   host: localhost
@@ -88,6 +98,10 @@ influxdb:
     - group.security
     - group.detailed
     - group.all_mobile_devices
+    - group.all_climate_devices
+    - group.all_tado_devices
+    - group.raspberry
+    - group.internet
     - climate.wohnzimmer
     - climate.schlafzimmer
     - climate.badezimmer_unten

@@ -2,11 +2,8 @@
     name: Wohnzimmer
     entities:
       - climate.wohnzimmer
-      - sensor.wohnzimmer_tado_mode
-      - sensor.wohnzimmer_power
       - sensor.wohnzimmer_link
       - sensor.wohnzimmer_temperature
-      - sensor.wohnzimmer_overlay
       - sensor.wohnzimmer_humidity
       - sensor.wohnzimmer_heating
       - light.fernseher
@@ -18,6 +15,7 @@
       - media_player.yamaha_receiver
       - media_player.der_fernseher
       - sensor.wolfgangs_notebook
+      - media_player.wohnzimmer_appletv
 
   entryroom:
     name: Eingang
@@ -28,11 +26,8 @@
     name: Schlafzimmer
     entities:
       - climate.schlafzimmer
-      - sensor.schlafzimmer_tado_mode
-      - sensor.schlafzimmer_power
       - sensor.schlafzimmer_link
       - sensor.schlafzimmer_temperature
-      - sensor.schlafzimmer_overlay
       - sensor.schlafzimmer_humidity
       - sensor.schlafzimmer_heating
       - light.kopflampe
@@ -45,11 +40,8 @@
     name: Bad unten
     entities:
       - climate.badezimmer_unten
-      - sensor.badezimmer_unten_tado_mode
-      - sensor.badezimmer_unten_power
       - sensor.badezimmer_unten_link
       - sensor.badezimmer_unten_temperature
-      - sensor.badezimmer_unten_overlay
       - sensor.badezimmer_unten_humidity
       - sensor.badezimmer_unten_heating
 
@@ -60,7 +52,7 @@
       - light.kuchenlampe
 
   downstairs:
-    name: Untere Etage
+    name: Unten
     view: yes
     entities:
       - group.livingroom
@@ -94,7 +86,7 @@
       - light.decke_oberes_bad
 
   upstairs:
-    name: Obere Etage
+    name: Oben
     view: yes
     entities:
       - group.bedroom_sophie

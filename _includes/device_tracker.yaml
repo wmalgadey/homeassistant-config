@@ -1,4 +1,7 @@
 ﻿- platform: fritz
   username: !secret fritz_username
   password: !secret fritz_password
-- platform: bluetooth_tracker
+
+#- platform: bluetooth_tracker
+
+#- platform: bluetooth_le_tracker

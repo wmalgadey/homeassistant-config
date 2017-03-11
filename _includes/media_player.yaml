@@ -4,3 +4,8 @@
   - platform: panasonic_viera
     name: Der Fernseher
     host: 192.168.6.39
+    
+  - platform: apple_tv
+    name: Wohnzimmer AppleTv
+    host: 192.168.6.25
+    login_id: 00000000-3de9-1cf7-e50c-29cb6ec145aa

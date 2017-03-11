@@ -12,6 +12,8 @@ detailed:
 #    - group.safety
     - group.all_devices
     - group.all_lights
+    - group.all_climate_devices
+    - group.all_tado_devices
 
 All Mobile Devices:
    name: Alle mobilen Geräte
@@ -20,8 +22,29 @@ All Mobile Devices:
     - device_tracker.heikesiphone
     - device_tracker.leasiphone
     - device_tracker.androidd7e9cde22f4c3620
-    
+
+All Climate Devices:
+  name: Alle Thermostate
+  entities:
+    - climate.wohnzimmer
+    - climate.schlafzimmer
+    - climate.badezimmer_unten
+
+All Tado Devices:
+  name: Alle Tado Daten
+  entities:
+    - sensor.wohnzimmer_tado_mode
+    - sensor.wohnzimmer_power
+    - sensor.wohnzimmer_overlay
+    - sensor.schlafzimmer_tado_mode
+    - sensor.schlafzimmer_power
+    - sensor.schlafzimmer_overlay
+    - sensor.badezimmer_unten_tado_mode
+    - sensor.badezimmer_unten_power
+    - sensor.badezimmer_unten_overlay
+
 #Safety:
 #  - sensor.living_room_battery_level
 #  - sensor.living_room_co_status
 #  - sensor.living_room_smoke_status
+

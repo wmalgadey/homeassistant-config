@@ -4,3 +4,24 @@
       arg: /home
     - type: memory_free
     - type: processor_use
+    - type: since_last_boot
+    - type: last_boot
+
+#- platform: cpuspeed
+
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'
+
+- platform: speedtest
+  minute: 30
+  hour:
+    - 0
+    - 6
+    - 12
+    - 18
+  monitored_conditions:
+    - ping
+    - download
+    - upload
