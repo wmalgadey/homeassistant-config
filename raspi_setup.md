@@ -17,6 +17,11 @@ $ sudo vi /etc/wpa_supplicant/wpa_supplicant.conf
 ```
 
 ```
+/boot/wpa_supplicant.conf
+/boot/ssh
+```
+
+```
 network={
     ssid="cp-pro_wlan_og"
     psk="cpWLAN07pro%"
@@ -28,20 +33,60 @@ network={
 }
 ```
 
+
+## Display config ##
+
+```
+http://www.waveshare.com/wiki/3.5inch_RPi_LCD_(A)
+```
+
+```
+sudo bash -c "echo 1 > /sys/class/backlight/rpi_backlight/bl_power"
+sudo bash -c "echo 0 > /sys/class/backlight/rpi_backlight/bl_power"
+```
+
+```
+sudo vi /usr/share/X11/xorg.conf.d/99-fbturbo.conf
+```
+
+```
+Section "Device"
+        Identifier      "Allwinner A10/A13/A20 FBDEV"
+        Driver          "fbturbo"
+        Option          "fbdev" "/dev/fb1"
+        Option          "Rotate" "UD"
+        Option          "SwapbuffersWait" "true"
+EndSection
+```
+
+```
+sudo vi /usr/share/X11/xorg.conf.d/99-calibration.con
+```
+
+```
+Section "InputClass"
+        Identifier      "calibration"
+        MatchProduct    "ADS7846 Touchscreen"
+        Option   "Calibration"   "268 3940 3862 210"
+        Option  "SwapAxes"      "1"
+        Option "EmulateThirdButton" "1"
+        Option "EmulateThirdButtonTimeout" "750"
+        Option "EmulateThirdButtonMoveThreshold" "30"
+EndSection
+```
+
+# Boot from usb #
+https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/msd.md
+
+
 # Update raspian
 ```
-sudo apt-get update && sudo apt-get upgrade -y
+sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y && sudo apt-get clean -y
 ```
 
 ```
-sudo apt-get install python3 python3-venv python3-pip -y
-```
-
-```
-sudo apt-get install bluetooth libbluetooth-dev -y
-```
-
-```
+sudo apt-get install python3 python3-venv python3-pip -y; \
+sudo apt-get install bluetooth libbluetooth-dev -y; \
 sudo apt-get install libxslt-dev libxml2-dev python3-lxml -y
 ```
 
@@ -92,8 +137,8 @@ sudo systemctl start homeassistant@homeassistant
 
 # influxdb
 ```
-wget https://dl.influxdata.com/influxdb/releases/influxdb_1.1.1_armhf.deb
-sudo dpkg -i influxdb_1.1.1_armhf.deb
+wget https://dl.influxdata.com/influxdb/releases/influxdb_1.2.2_armhf.deb
+sudo dpkg -i influxdb_1.2.2_armhf.deb
 ```
 
 ```
@@ -126,8 +171,8 @@ $ sudo apt-get install libfontconfig -y
 ```
 
 ```
-wget https://github.com/fg2it/grafana-on-raspberry/releases/download/v4.0.2/grafana_4.0.2-1481228559_armhf.deb
-sudo dpkg -i grafana_4.0.2-1481228559_armhf.deb
+wget https://github.com/fg2it/grafana-on-raspberry/releases/download/v4.1.2/grafana_4.1.2-1487023783_armhf.deb
+sudo dpkg -i grafana_4.1.2-1487023783_armhf.deb
 ```
 
 ```
@@ -241,8 +286,7 @@ sudo systemctl status homebridge
 ```
 
 
-
-## Snippets
+# Snippets
 ```
 sudo systemctl restart homeassistant@homeassistant && sudo journalctl -f -u homeassistant@homeassistant
 
@@ -258,6 +302,8 @@ sudo journalctl -f -u homeassistant@homeassistant -n 2000 | grep -i 'error'
 
 
 # update ha
+```
 sudo su -s /bin/bash homeassistant
 source /srv/homeassistant/homeassistant_venv/bin/activate
 pip3 install --upgrade homeassistant
+```
