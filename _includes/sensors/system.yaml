@@ -1,4 +1,4 @@
-- platform: systemmonitor
+﻿- platform: systemmonitor
   resources:
     - type: disk_use_percent
       arg: /home
@@ -7,6 +7,12 @@
     - type: since_last_boot
     - type: last_boot
 
+- platform: command_line
+  name: CPU Temperature
+  command: 'cat /sys/class/thermal/thermal_zone0/temp'
+  unit_of_measurement: '°C'
+  value_template: '{{ value | multiply(0.001) }}'
+    
 #- platform: cpuspeed
 
 - platform: time_date
