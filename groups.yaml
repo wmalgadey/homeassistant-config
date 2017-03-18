@@ -1,0 +1,257 @@
+﻿###############################################################
+#
+#  Views
+#
+###############################################################
+
+default_view:
+  view: yes
+  icon: mdi:home
+  entities:
+    - updater.updater
+    - device_tracker.wmphone
+    - device_tracker.heikesiphone
+    - device_tracker.leasiphone
+    - device_tracker.androidd7e9cde22f4c3620
+    - group.security
+
+downstairs:
+    name: Unten
+    view: yes
+    entities:
+      - group.livingroom
+      - group.masterbedroom
+      - group.wetroom_down
+      - group.kitchen
+      - group.entryroom
+
+upstairs:
+    name: Oben
+    view: yes
+    entities:
+      - group.bedroom_sophie
+      - group.bedroom_fabian
+      - group.bedroom_lea
+      - group.wetroom_up
+
+detailed:
+   name: Detailiert
+   view: yes
+   entities:
+    - group.all_mobile_devices
+#    - group.safety
+    - group.all_devices
+    - group.all_lights
+    - group.all_climate_devices
+    - group.all_tado_devices
+    
+system:
+  name: System
+  view: yes
+  entities:
+    - group.links
+    - group.devices
+    - sensor.lines_of_configuration
+    - group.weather
+    - group.tado_updates
+    - sensor.phone
+    - group.internet
+    - group.raspberry
+  icon: mdi:battery-80
+    
+    
+
+###############################################################
+#
+#  Detailed groups
+#
+###############################################################
+  
+All Mobile Devices:
+   name: Alle mobilen Geräte
+   entities:
+    - device_tracker.wmphone
+    - device_tracker.heikesiphone
+    - device_tracker.leasiphone
+    - device_tracker.androidd7e9cde22f4c3620
+
+All Climate Devices:
+  name: Alle Thermostate
+  entities:
+    - climate.wohnzimmer
+    - climate.schlafzimmer
+    - climate.badezimmer_unten
+
+All Tado Devices:
+  name: Alle Tado Daten
+  entities:
+    - sensor.wohnzimmer_tado_mode
+    - sensor.wohnzimmer_power
+    - sensor.wohnzimmer_overlay
+    - sensor.schlafzimmer_tado_mode
+    - sensor.schlafzimmer_power
+    - sensor.schlafzimmer_overlay
+    - sensor.badezimmer_unten_tado_mode
+    - sensor.badezimmer_unten_power
+    - sensor.badezimmer_unten_overlay
+
+#Safety:
+#  - sensor.living_room_battery_level
+#  - sensor.living_room_co_status
+#  - sensor.living_room_smoke_status
+
+
+###############################################################
+#
+#  Layers groups
+#
+###############################################################
+
+livingroom:
+    name: Wohnzimmer
+    entities:
+      - climate.wohnzimmer
+      - sensor.wohnzimmer_link
+      - sensor.wohnzimmer_temperature
+      - sensor.wohnzimmer_humidity
+      - sensor.wohnzimmer_heating
+      - light.fernseher
+      - light.esstisch
+      - device_tracker.dieanlage
+      - device_tracker.xboxone
+      - device_tracker.nintendowiiu
+      - device_tracker.wohnzimmer
+      - media_player.yamaha_receiver
+      - media_player.der_fernseher
+      - sensor.wolfgangs_notebook
+      - media_player.wohnzimmer_appletv
+
+entryroom:
+    name: Eingang
+    entities:
+      - sensor.phone
+
+masterbedroom:
+    name: Schlafzimmer
+    entities:
+      - climate.schlafzimmer
+      - sensor.schlafzimmer_link
+      - sensor.schlafzimmer_temperature
+      - sensor.schlafzimmer_humidity
+      - sensor.schlafzimmer_heating
+      - light.kopflampe
+      - light.schlafzimmer_decke
+      - device_tracker.schlafzimmer
+      - device_tracker.wmphone
+      - device_tracker.heikesiphone
+
+wetroom_down:
+    name: Bad unten
+    entities:
+      - climate.badezimmer_unten
+      - sensor.badezimmer_unten_link
+      - sensor.badezimmer_unten_temperature
+      - sensor.badezimmer_unten_humidity
+      - sensor.badezimmer_unten_heating
+
+kitchen:
+    name: Küche
+    entities:
+      - light.lichtleiste
+      - light.kuchenlampe
+
+bedroom_sophie:
+    name: Sophies Zimmer
+
+bedroom_fabian:
+    name: Fabians Zimmer
+    entities:
+      - light.fabians_decke
+      - device_tracker.androidd7e9cde22f4c3620
+      - sensor.fabians_notebook
+
+bedroom_lea:
+    name: Leas Zimmer
+    entities:
+      - light.leas_decke
+      - light.leas_nachttisch
+      - device_tracker.leasappletv
+      - device_tracker.leasiphone
+      - sensor.leas_notebook
+
+wetroom_up:
+    name: Bad oben
+    entities:
+      - light.decke_oberes_bad
+     
+      
+###############################################################
+#
+#  System groups
+#
+###############################################################
+  
+Security:
+  - input_boolean.visitor
+  
+Raspberry:
+  name: Raspberry pi 3
+  entities:
+    - sensor.time
+    - sensor.date
+    - sensor.raspberrypi
+    - sensor.last_boot
+    - sensor.since_last_boot
+    - sensor.cpu_use
+    - sensor.cpu_temperature
+    - sensor.disk_use_home
+    - sensor.ram_free
+
+Internet:
+  - sensor.speedtest_ping
+  - sensor.speedtest_download
+  - sensor.speedtest_upload
+
+Devices:
+  - sensor.fabians_notebook
+  - sensor.leas_notebook
+  - sensor.wolfgangs_notebook
+  - sensor.router
+  - sensor.tado_bridge
+  - sensor.tado_bridge_status
+  - sensor.hue_bridge
+  - sensor.raspberrypi
+
+Links:
+  - weblink.dashboard
+  - weblink.router
+
+Weather:
+  name: Wetter
+  entities:
+    - sun.sun
+    - sensor.dark_sky_summary
+    - sensor.dark_sky_daily_summary
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_apparent_temperature
+    - sensor.dark_sky_daily_high_temperature
+    - sensor.dark_sky_daily_low_temperature
+    - sensor.dark_sky_cloud_coverage
+#    - sensor.dark_sky_daily_high_apparent_temperature
+#    - sensor.dark_sky_daily_low_apparent_temperature
+    - sensor.dark_sky_dew_point
+#    - sensor.dark_sky_hourly_summary
+    - sensor.dark_sky_humidity
+#    - sensor.dark_sky_icon
+#    - sensor.dark_sky_minutely_summary
+#    - sensor.dark_sky_nearest_storm_bearing
+#    - sensor.dark_sky_nearest_storm_distance
+    - sensor.dark_sky_ozone
+#    - sensor.dark_sky_precip
+#    - sensor.dark_sky_precip_intensity
+#    - sensor.dark_sky_daily_max_precip_intensity
+#    - sensor.dark_sky_precip_probability
+    - sensor.dark_sky_pressure
+#    - sensor.dark_sky_visibility
+    - sensor.dark_sky_wind_bearing
+    - sensor.dark_sky_wind_speed

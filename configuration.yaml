@@ -1,4 +1,4 @@
-############################################################
+﻿############################################################
 #
 # Home Assistant Main Configuration File
 #
@@ -22,12 +22,13 @@ http:
 
 frontend:
 
-#config:
+config:
 
 updater:
 
 discovery:
-  
+
+
 history:
   exclude:
     domains:
@@ -58,6 +59,7 @@ ifttt:
     
 sun:
 
+
 ############################################################
 #
 # Components
@@ -72,6 +74,8 @@ light:
 tado_v1:
   username: !secret mytado_username
   password: !secret mytado_password
+#  mytado_username: !secret mytado_username
+#  mytado_password: !secret mytado_password
 
 influxdb:
   host: localhost
@@ -120,6 +124,7 @@ device_tracker: !include _includes/device_tracker.yaml
 panel_iframe: !include _includes/panel_iframe.yaml
 weblink: !include _includes/weblink.yaml
 input_boolean: !include _includes/input_boolean.yaml
+group: !include groups.yaml
 
 # Merge List
 
@@ -127,5 +132,3 @@ sensor: !include_dir_merge_list _includes/sensors
 zone: !include_dir_merge_list _includes/zones
 
 # Merge Named
-
-group: !include_dir_merge_named _includes/groups
