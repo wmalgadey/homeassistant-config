@@ -14,6 +14,7 @@ default_view:
     - device_tracker.leasiphone
     - device_tracker.androidd7e9cde22f4c3620
     - group.security
+    - sensor.exchange_rate_1_btc
 
 downstairs:
     name: Unten
