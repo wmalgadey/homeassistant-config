@@ -1,5 +1,10 @@
 ﻿- platform: fritzbox_callmonitor
 
+- platform: bitcoin
+  currency: EUR
+  display_options:
+    - exchangerate
+
 # outside conditions
 - platform: darksky
   api_key: !secret darksky_api_key
