@@ -76,7 +76,57 @@ EndSection
 ```
 
 # Boot from usb #
-https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/msd.md
+```
+sudo parted /dev/sda
+```
+
+```
+(parted) mktable msdos
+Yes/No? Yes
+(parted) mkpart primary fat32 0% 100M
+(parted) mkpart primary ext4 100M 100%
+(parted) print
+```
+
+```
+sudo mkfs.vfat -n BOOT -F 32 /dev/sda1
+sudo mkfs.ext4 /dev/sda2
+```
+
+```
+sudo mkdir /mnt/target
+sudo mount /dev/sda2 /mnt/target/
+sudo mkdir /mnt/target/boot
+sudo mount /dev/sda1 /mnt/target/boot/
+sudo apt-get update; sudo apt-get install rsync
+sudo rsync -ax --progress / /boot /mnt/target
+```
+
+```
+cd /mnt/target
+sudo mount --bind /dev dev
+sudo mount --bind /sys sys
+sudo mount --bind /proc proc
+sudo chroot /mnt/target
+rm /etc/ssh/ssh_host*
+dpkg-reconfigure openssh-server
+exit
+sudo umount dev
+sudo umount sys
+sudo umount proc
+```
+
+```
+sudo sed -i "s,root=/dev/mmcblk0p2,root=/dev/sda2," /mnt/target/boot/cmdline.txt
+sudo sed -i "s,/dev/mmcblk0p,/dev/sda," /mnt/target/etc/fstab
+```
+
+```
+cd ~
+sudo umount /mnt/target/boot 
+sudo umount /mnt/target
+sudo poweroff 
+```
 
 
 # Update raspian
@@ -92,26 +142,20 @@ sudo apt-get install libxslt-dev libxml2-dev python3-lxml -y
 
 # Home-assistant
 ```
-sudo useradd -rm homeassistant
-cd /srv
-sudo mkdir homeassistant
-sudo chown homeassistant:homeassistant homeassistant
-sudo su -s /bin/bash homeassistant 
-cd /srv/homeassistant
+sudo useradd -rm homeassistant; \
+cd /srv; \
+sudo mkdir homeassistant;\
+sudo chown homeassistant:homeassistant homeassistant;\
+sudo su -s /bin/bash homeassistant; \
+cd /srv/homeassistant; \
 python3 -m venv homeassistant_venv
-```
-
-```
 source /srv/homeassistant/homeassistant_venv/bin/activate
-```
-
-```
 pip3 install homeassistant
 ```
 
 ## Autostart
 ```
-$ sudo vi /etc/systemd/system/homeassistant@homeassistant.service
+sudo vi /etc/systemd/system/homeassistant@homeassistant.service
 ```
 
 ```
@@ -142,7 +186,7 @@ sudo dpkg -i influxdb_1.2.2_armhf.deb
 ```
 
 ```
-$ sudo vi /etc/influxdb/influxdb.conf
+sudo vi /etc/influxdb/influxdb.conf
 ```
 
 * comment out `reporting-disabled = true`
@@ -156,7 +200,7 @@ sudo systemctl status influxdb
 ```
 
 ```
-$ influx
+influx
 ```
 
 ```
@@ -167,10 +211,7 @@ CREATE USER "homeassistant" WITH PASSWORD '16Smiler'
 
 # grafana
 ```
-$ sudo apt-get install libfontconfig -y
-```
-
-```
+sudo apt-get install libfontconfig -y
 wget https://github.com/fg2it/grafana-on-raspberry/releases/download/v4.1.2/grafana_4.1.2-1487023783_armhf.deb
 sudo dpkg -i grafana_4.1.2-1487023783_armhf.deb
 ```
@@ -190,11 +231,8 @@ tar -xvf node-v4.6.0-linux-armv7l.tar.gz
 cd node-v4.6.0-linux-armv7l
 sudo cp -R * /usr/local/
 cd
-````
-
+sudo apt-get install libavahi-compat-libdnssd-dev -y
 ```
-$ sudo apt-get install libavahi-compat-libdnssd-dev -y
-````
 
 ```
 sudo npm install -g --unsafe-perm homebridge
