@@ -1,4 +1,4 @@
-device_tracker.gateway:
+﻿device_tracker.gateway:
   hidden: True
   
 device_tracker.ourhue:
@@ -22,6 +22,8 @@ device_tracker.wmbook:
   
 group.all_devices:
   hidden: False
+  friendly_name: Alle Geräte
   
 group.all_lights:
   hidden: False
+  friendly_name: Alle Lichter
