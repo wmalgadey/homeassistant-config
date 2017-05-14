@@ -82,34 +82,14 @@ influxdb:
   database: homeassistant
   username: !secret influxdb_username
   password: !secret influxdb_password
-  blacklist:
-    - group.all_lights
-    - group.all_devices
-    - group.livingroom
-    - group.entryroom
-    - group.masterbedroom
-    - group.wetroom_down
-    - group.kitchen
-    - group.upstairs
-    - group.downstairs
-    - group.bedroom_sophie
-    - group.bedroom_lea
-    - group.bedroom_fabian
-    - group.wetroom_up
-    - group.dark_sky
-    - group.tado_updates
-    - group.default_view
-    - group.security
-    - group.detailed
-    - group.all_mobile_devices
-    - group.all_climate_devices
-    - group.all_tado_devices
-    - group.raspberry
-    - group.internet
-    - climate.wohnzimmer
-    - climate.schlafzimmer
-    - climate.badezimmer_unten
-
+  default_measurement: state
+  exclude:
+    domains:
+      - group
+      - automation
+  tags:
+    instance: prod
+    source: hass
   
 ############################################################
 #
@@ -125,7 +105,7 @@ panel_iframe: !include _includes/panel_iframe.yaml
 weblink: !include _includes/weblink.yaml
 input_boolean: !include _includes/input_boolean.yaml
 group: !include groups.yaml
-
+shell_command: !include _includes/shell_commands.yaml
 # Merge List
 
 sensor: !include_dir_merge_list _includes/sensors
