@@ -22,3 +22,4 @@ home-assistant_v2.*
 custom_components
 deps
 tts
+/.DS_Store
