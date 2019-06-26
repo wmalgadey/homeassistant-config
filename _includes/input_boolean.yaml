@@ -1,13 +1,19 @@
-visitor:
-  name: Besucher Modus 
-  initial: off
-  
-sleep_mode:
-  name: Schlaf Modus
-  initial: off
-  icon: mdi:sleep
-  
-on_vaca:
-  name: Im Urlaub
-  initial: off
-  icon: mdi:airplane-takeoff
+  enable_security:
+    name: Alarm aktiviert
+    icon: mdi:shield-outline
+
+  disable_notifications:
+    name: Benachrichtigung deaktiviert
+    icon: mdi:comment-text-outline
+
+  alarm_tripped:
+    name: Alarm ausgelöst
+    icon: mdi:shield-outline
+
+  vacation_mode:
+    name: Urlaubsmodus
+    icon: mdi:airplane
+
+  waiting_late_mode:
+    name: Komme spät nach hause
+    icon: mdi:weather-night

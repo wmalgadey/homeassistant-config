@@ -1,4 +1,5 @@
-﻿- platform: fritz
+- platform: fritz
+  host: !secret fritz_ip
   username: !secret fritz_username
   password: !secret fritz_password
 

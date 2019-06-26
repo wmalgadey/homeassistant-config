@@ -1,114 +1,108 @@
-﻿############################################################
-#
-# Home Assistant Main Configuration File
-#
-############################################################
-
 homeassistant:
   name: Wohnung
   latitude: !secret latitude_home
   longitude: !secret longitude_home
   elevation: 42
   unit_system: metric
+  #temperature_unit: C
   time_zone: Europe/Berlin
-  customize: !include_dir_merge_named _includes/customization
-
-http:
-  api_password: !secret hass_apipassword
-  trusted_networks:
-    - 192.168.6.0/24
-    - 127.0.0.1
-  ip_ban_enabled: True
+  # Customization file
+  customize: !include customize.yaml
 
 frontend:
-
-config:
+  extra_html_url:
+    - /local/custom_ui/state-card-floorplan.html
 
 updater:
-
-discovery:
-
-
-history:
-  exclude:
-    domains:
-      - automation
-      - camera
-      - group
-      - sun
-      - updater
-      - weblink
-logbook:
-recorder:
-  purge_days: 3
-#zeroconf:
-#logger:
-#  default: error
-#  logs:
-#    homeassistant.components.sensor: info
+  reporting: yes
+  # Optional, allows Home Assistant developers to focus on popular components.
+  include_used_components: true
 
 conversation:
 
-# Text to speech
-tts:
-  - platform: google
-    language: 'de'
-    
-ifttt:
-  key: bfC20Y3l7Pzsbx-h5V72L2
-    
+recorder:
+
+history:
+
+discovery:
+  ignore:
+    - yamaha
+#  enable:
+#    - homekit
+
+config:
+
+system_health:
+
+mobile_app:
+
+person:
+
 sun:
 
+ifttt:
+  key: !secret ifttt_key
 
-############################################################
-#
-# Components
-#
-############################################################
+# Text to speech
+tts:
+  - platform: google_translate
+    service_name: google_say
+    language: 'de'
+    base_url: !secret google_translate_url
 
-light:
-  platform: hue
-  host: 192.168.6.20
-  allow_unreachable: true
-
-tado_v1:
+tado:
   username: !secret mytado_username
   password: !secret mytado_password
-#  mytado_username: !secret mytado_username
-#  mytado_password: !secret mytado_password
 
-influxdb:
-  host: localhost
-  database: homeassistant
-  username: !secret influxdb_username
-  password: !secret influxdb_password
-  default_measurement: state
-  exclude:
-    domains:
-      - group
-      - automation
-  tags:
-    instance: prod
-    source: hass
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api_key
+
+vera:
+  vera_controller_url: !secret vera_controller_url
+  exclude: [ 5, 6]
+  # Optional to import switches as lights - this is a list of vera device ids
+  lights: [4]
+
+mqtt:
+  broker: a0d7b954-mqtt
+  username: !secret mqtt_user
+  password: !secret mqtt_pass
+  client_id: home-assistant
   
-############################################################
-#
-# Includes
-#
-############################################################
+apple_tv:
+  - host: !secret apple_1_ip
+    login_id: !secret apple_1_id
+    credentials: !secret apple_1_key
+    start_off: true
 
-# Single Files
+camera:
+  - platform: mjpeg
+    name: Die Kamera
+    mjpeg_url: http://192.168.6.67/videostream.cgi?loginuse=admin&loginpas=16smiler
+#    still_image_url: http://192.168.6.67/snapshot.cgi?user=admin&pwd=16smiler
+    verify_ssl: false
 
-media_player: !include _includes/media_player.yaml
-device_tracker: !include _includes/device_tracker.yaml
-panel_iframe: !include _includes/panel_iframe.yaml
-weblink: !include _includes/weblink.yaml
-input_boolean: !include _includes/input_boolean.yaml
+rest_command:
+  die_kamera_night_vision:
+    url: 'http://192.168.6.67/camera_control.cgi?loginuse=admin&loginpas=16smiler&param=14&value={{ value }}'
+
+
+alarm_control_panel: !include includes/alarm.yaml
+
+input_boolean: !include includes/input_boolean.yaml
+#input_select: !include includes/input_select.yaml
+#panel_iframe: !include includes/panel_iframe.yaml
+panel_custom: !include includes/panel_custom.yaml
+device_tracker: !include includes/device_tracker.yaml
+
+sensor: !include_dir_merge_list includes/sensors
+binary_sensor: !include_dir_merge_list includes/binary
+zone: !include_dir_merge_list includes/zones
+switch: !include_dir_merge_list includes/switches
+
+media_player: !include_dir_merge_list includes/mediaplayer
+
 group: !include groups.yaml
-shell_command: !include _includes/shell_commands.yaml
-# Merge List
-
-sensor: !include_dir_merge_list _includes/sensors
-zone: !include_dir_merge_list _includes/zones
-
-# Merge Named
+automation: !include automations.yaml
+script: !include scripts.yaml

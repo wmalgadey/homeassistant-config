@@ -1,7 +1,0 @@
-entities:
-- name: Router
-  url: http://192.168.6.1
-  icon: mdi:router-wireless
-
-- name: Dashboard
-  url: http://192.168.6.62:3000
