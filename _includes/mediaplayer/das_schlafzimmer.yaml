@@ -1,0 +1,3 @@
+  - platform: yamaha_musiccast
+    host: !secret yamaha_musiccast_1
+    port: 5004

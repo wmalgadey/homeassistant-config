@@ -1,0 +1,9 @@
+  # Use the Python ADB implementation without authentication
+  - platform: androidtv
+    name: Fire TV Lea
+    host: 192.168.6.62
+
+  # Use the Python ADB implementation with authentication
+  - platform: androidtv
+    name: Fire TV Fabian
+    host: 192.168.6.54

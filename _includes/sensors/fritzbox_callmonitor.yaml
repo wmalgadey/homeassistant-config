@@ -1,0 +1,10 @@
+- platform: fritzbox_callmonitor
+  name: phone
+  host: !secret fritz_ip
+  username: !secret fritz_username
+  password: !secret fritz_password
+  phonebook: 0
+  prefixes:
+    - '+49'
+    - '+492234'
+    - '02234'

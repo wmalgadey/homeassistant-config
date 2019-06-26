@@ -1,0 +1,5 @@
+- name: KiTa
+  latitude: !secret latitude_zone4
+  longitude: !secret longitude_zone4
+  radius: 150
+  icon: mdi:human-greeting

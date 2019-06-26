@@ -1,0 +1,11 @@
+  - name: floorplan_bottom
+    sidebar_title: Untere Etage
+    sidebar_icon: mdi:home
+    url_path: floorplan_bottom
+    config: !include floorplan/floorplan_bottom.yaml
+
+  - name: floorplan_top
+    sidebar_title: Obere Etage
+    sidebar_icon: mdi:home
+    url_path: floorplan_top
+    config: !include floorplan/floorplan_top.yaml

@@ -1,0 +1,5 @@
+- name: Schule
+  latitude: !secret latitude_zone3
+  longitude: !secret longitude_zone3
+  radius: 200
+  icon: mdi:school

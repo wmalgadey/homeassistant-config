@@ -1,0 +1,5 @@
+- name: CP-Pro
+  latitude: !secret latitude_zone2  
+  longitude: !secret longitude_zone2
+  radius: 150
+  icon: mdi:briefcase

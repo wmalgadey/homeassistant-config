@@ -1,0 +1,4 @@
+  - platform: broadlink
+    host: !secret broadlink_ip
+    mac: !secret broadlink_mac
+    timeout: 15

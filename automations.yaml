@@ -1,0 +1,34 @@
+- id: phone_status
+  alias: Phone Status
+  trigger:
+  - entity_id: sensor.phone
+    platform: state
+  condition:
+  - condition: state
+    entity_id: input_boolean.disable_notifications
+    state: 'false'
+  action:
+  - data:
+      message: >-
+            {% if is_state("sensor.phone", "idle") %}
+              Keiner telefoniert
+            {% elif is_state("sensor.phone", "dialing") %}
+              Anruf bei {{ states.sensor.phone.attributes.to_name }} ({{ states.sensor.phone.attributes.to }})
+            {% elif is_state("sensor.phone", "ringing") %}
+              Anruf von {{ states.sensor.phone.attributes.from_name }} ({{ states.sensor.phone.attributes.from }})
+            {% else %}
+              Gespräch mit {{ states.sensor.phone.attributes.with_name }} ({{ states.sensor.phone.attributes.with }})
+            {% endif %}
+    service: notify.notify
+- id: startup_notification
+  alias: Startup Notification
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - data_template:
+      value1: 'HA Status:'
+      value2: '{{ trigger.event.data.entity_id.split(''_'')[1] }} is '
+      value3: '{{ trigger.event.data.to_state.state }}'
+    service: script.ifttt_notify

@@ -1,0 +1,4 @@
+- platform: bitcoin
+  currency: EUR
+  display_options:
+    - exchangerate

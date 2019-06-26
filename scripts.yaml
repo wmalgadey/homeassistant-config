@@ -1,0 +1,21 @@
+ipcam_nv_on:
+  alias: IP Kamera NV an
+  sequence:
+  - data:
+      value: 0
+    service: rest_command.die_kamera_night_vision
+ipcam_nv_off:
+  alias: IP Kamera NV aus
+  sequence:
+  - data:
+      value: 1
+    service: rest_command.die_kamera_night_vision
+ifttt_notify:
+  alias: IFTTT Notify
+  sequence:
+  - data:
+      event: TestHA_Trigger
+      value1: '{{ value1 }}'
+      value2: '{{ value2 }}'
+      value3: '{{ value3 }}'
+    service: ifttt.trigger
